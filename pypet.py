@@ -34,6 +34,6 @@ def feed(pet):
     else:
         print('The Pypet is not hungry!')
 
-for pet in pets:
-    feed(pet)
-    print(pet)
+for animal in pets:
+    feed(animal)
+    print(animal)
