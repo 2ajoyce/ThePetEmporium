@@ -1,6 +1,6 @@
 """The Pet Emporium, A programming collaboration between Aaron and Leah"""
 
-print('Welcome to Pypet!')
+print('Welcome to The Pet Emporium!')
 
 
 cat = {
