@@ -35,5 +35,5 @@ def feed(pet):
         print('Your pet is not hungry!')
 
 for animal in pets:
-    feed(animal)
+feed(animal)
     print(animal)
