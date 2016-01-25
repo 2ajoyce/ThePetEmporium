@@ -1,14 +1,5 @@
 """The Pet Emporium, A programming collaboration between Aaron and Leah"""
 
-from tornado.wsgi import WSGIContainer
-from tornado.httpserver import HTTPServer
-from tornado.ioloop import IOLoop
-from yourapplication import app
-
-http_server = HTTPServer(WSGIContainer(app))
-http_server.listen(5000)
-IOLoop.instance().start()
-
 from flask import Flask, url_for
 app = Flask(__name__)
 
