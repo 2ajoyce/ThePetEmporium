@@ -73,19 +73,17 @@ def main():
 
     kennel = importPets()
 
-    for pet in kennel:
-        print(pet.pName, pet.pPhoto)
-
     while True:
         print("""
-        1.Add a Pet
+        1.View Kennel
         2.Delete a Pet
         3.Look Up Pet
         4.Exit/Quit
         """)
         ans = input("What would you like to do? ")
         if ans == "1":
-            print("\n Pet Added")
+            for pet in kennel:
+                print(pet.pName, pet.pPhoto)
         elif ans == "2":
             print("\n Pet Deleted")
         elif ans == "3":
