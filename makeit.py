@@ -2,21 +2,6 @@
 
 import json
 
-cat = {
-        'name' : 'Triangle',
-        'hungry' : True,
-        'weight' : 9.5,
-        'age' : 5,
-        'photo' : '(=^o.o^=)__',
-    }
-
-mouse = {
-        'name' : 'Nibbles',
-        'age' : 6,
-        'weight' : 1.5,
-        'hungry' : True,
-        'photo' : '<:3 )~~~~',
-    }
 
 class Pet:
     """A Pet Class"""
@@ -48,7 +33,6 @@ def importPets():
         pHungry = pet[4]['hungry']
         pPhoto = pet[5]['photo']
         Kennel.append(Pet(pType, pName, pAge, pWeight, pHungry, pPhoto))
-        print(Kennel)
     return Kennel
 
 
@@ -62,37 +46,31 @@ def pickaPet():
 def main():
     print('Welcome to The Pet Emporium!')
     print('Who would you like to play with?')
-    print(cat['name'], cat['photo'])
-    print(mouse['name'], mouse['photo'])
 
-    kennel = importPets()    
-    pet = pickaPet()
-    pets = [cat, mouse]
+    kennel = importPets()
 
-    for animal in pets:
-        feed(animal)
-        print(animal)
+    for pet in kennel:
+        print(pet.name, pet.photo)
 
-ans=True
-while ans:
-    print ("""
-    1.Add a Pet
-    2.Delete a Pet
-    3.Look Up Pet
-    4.Exit/Quit
-    """)
-    ans=input("What would you like to do? ") 
-    if ans=="1": 
-      print("\n Pet Added") 
-    elif ans=="2":
-      print("\n Pet Deleted") 
-    elif ans=="3":
-      print("\n Pet Found") 
-    elif ans=="4":
-      break
-      print("\n Goodbye") 
-    elif ans !="":
-      print("\n Not Valid Choice Try again") 
+    while True:
+        print ("""
+        1.Add a Pet
+        2.Delete a Pet
+        3.Look Up Pet
+        4.Exit/Quit
+        """)
+        ans = input("What would you like to do? ") 
+        if ans == "1": 
+          print("\n Pet Added") 
+        elif ans == "2":
+          print("\n Pet Deleted") 
+        elif ans == "3":
+          print("\n Pet Found") 
+        elif ans == "4":
+          print("\n Goodbye")
+          break 
+        elif ans != "":
+          print("\n Not Valid Choice Try again") 
 
 if __name__ == '__main__':
     #  Start it
