@@ -1,13 +1,15 @@
 {
-    "cat" : [
+    "1" : [
+    {"type" : "cat"},
     {"name" : "Triangle"},
-    {"hungry" : "True"},
-    {"weight" : "9.5"},
     {"age" : "5"},
+    {"weight" : "9.5"},
+    {"hungry" : "True"},
     {"photo" : "(=^o.o^=)__"}
     ],
 
-    "mouse" : [
+    "2" : [
+    {"type" : "mouse"},
     {"name" : "Nibbles"},
     {"age" : "6"},
     {"weight" : "1.5"},
