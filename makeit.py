@@ -1,5 +1,6 @@
 """The Pet Emporium, A programming collaboration between Aaron and Leah"""
 
+import json
 
 def feed(pet):
     """Feeds the pet that is passed into it.  The pet will stop being hungry and gain weight."""
@@ -9,10 +10,17 @@ def feed(pet):
     else:
         print('Your pet is not hungry!')
 
+def importPets():
+    pets = json.loads(open('pets.json').read())
+    return pets
+
+
 def main():
     print('Welcome to The Pet Emporium!')
 
-
+    kennel = importPets()
+    print(kennel)
+    
     cat = {
         'name' : 'Triangle',
         'hungry' : True,
