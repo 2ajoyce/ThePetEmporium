@@ -2,7 +2,7 @@
 
 import json
 
-    cat = {
+cat = {
         'name' : 'Triangle',
         'hungry' : True,
         'weight' : 9.5,
@@ -10,7 +10,7 @@ import json
         'photo' : '(=^o.o^=)__',
     }
 
-    mouse = {
+mouse = {
         'name' : 'Nibbles',
         'age' : 6,
         'weight' : 1.5,
@@ -30,8 +30,9 @@ def importPets():
     pets = json.loads(open('pets.json').read())
     return pets
 
+# Lets user pick a pet from the list shown to interact with
 def pickaPet():
-
+    pet = input()
     return pet
 
 # Greet user and ask what pet they would like to interact with
@@ -49,6 +50,27 @@ def main():
     for animal in pets:
         feed(animal)
         print(animal)
+
+ans=True
+while ans:
+    print ("""
+    1.Add a Pet
+    2.Delete a Pet
+    3.Look Up Pet
+    4.Exit/Quit
+    """)
+    ans=input("What would you like to do? ") 
+    if ans=="1": 
+      print("\n Pet Added") 
+    elif ans=="2":
+      print("\n Pet Deleted") 
+    elif ans=="3":
+      print("\n Pet Found") 
+    elif ans=="4":
+      break
+      print("\n Goodbye") 
+    elif ans !="":
+      print("\n Not Valid Choice Try again") 
 
 if __name__ == '__main__':
     #  Start it
