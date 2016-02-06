@@ -14,13 +14,9 @@ def importPets():
     pets = json.loads(open('pets.json').read())
     return pets
 
-
+# Greet user and ask what pet they would like to interact with
+# Show list of pets with phots and names
 def main():
-    print('Welcome to The Pet Emporium!')
-
-    kennel = importPets()
-    print(kennel)
-    
     cat = {
         'name' : 'Triangle',
         'hungry' : True,
@@ -36,6 +32,14 @@ def main():
         'hungry' : True,
         'photo' : '<:3 )~~~~',
     }
+    print('Welcome to The Pet Emporium!')
+    print('Who would you like to play with?')
+    print(cat['photo'])
+    print(mouse['photo'])
+
+    kennel = importPets()
+    print(kennel)
+    
 
     pets = [cat, mouse]
 
