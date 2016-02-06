@@ -1,30 +1,5 @@
 """The Pet Emporium, A programming collaboration between Aaron and Leah"""
 
-print('Welcome to The Pet Emporium!')
-
-
-cat = {
-    'name' : 'Triangle',
-    'hungry' : True,
-    'weight' : 9.5,
-    'age' : 5,
-    'photo' : '(=^o.o^=)__',
-}
-
-mouse = {
-    'name' : 'Nibbles',
-    'age' : 6,
-    'weight' : 1.5,
-    'hungry' : True,
-    'photo' : '<:3 )~~~~',
-}
-
-pets = [cat, mouse]
-
-print('Hello ' + cat['name'])
-print(cat['photo'])
-print('Hello ' + mouse['name'])
-print(mouse['photo'])
 
 def feed(pet):
     """Feeds the pet that is passed into it.  The pet will stop being hungry and gain weight."""
@@ -34,6 +9,37 @@ def feed(pet):
     else:
         print('Your pet is not hungry!')
 
-for animal in pets:
-feed(animal)
-    print(animal)
+def main():
+    print('Welcome to The Pet Emporium!')
+
+
+    cat = {
+        'name' : 'Triangle',
+        'hungry' : True,
+        'weight' : 9.5,
+        'age' : 5,
+        'photo' : '(=^o.o^=)__',
+    }
+
+    mouse = {
+        'name' : 'Nibbles',
+        'age' : 6,
+        'weight' : 1.5,
+        'hungry' : True,
+        'photo' : '<:3 )~~~~',
+    }
+
+    pets = [cat, mouse]
+
+    print('Hello ' + cat['name'])
+    print(cat['photo'])
+    print('Hello ' + mouse['name'])
+    print(mouse['photo'])
+
+    for animal in pets:
+        feed(animal)
+        print(animal)
+
+if __name__ == '__main__':
+    #  Start it
+    main()
