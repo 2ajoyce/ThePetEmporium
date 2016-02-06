@@ -75,6 +75,7 @@ def main():
 
     while True:
         print("""
+         *Main Menu*
         1.View Kennel
         2.Delete a Pet
         3.Look Up Pet
@@ -82,8 +83,11 @@ def main():
         """)
         ans = input("What would you like to do? ")
         if ans == "1":
+            print('\\\\Kennel\\\\')
+            print()
             for pet in kennel:
                 print(pet.pName, pet.pPhoto)
+                print()
         elif ans == "2":
             print("\n Pet Deleted")
         elif ans == "3":
