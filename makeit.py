@@ -1,39 +1,9 @@
 """The Pet Emporium, A programming collaboration between Aaron and Leah"""
 
 import json
+from pet import Pet
 
 
-class Pet:
-    """A Pet Class"""
-    def __init__(self, pType, pName, pAge, pWeight, pHungry, pPhoto):
-        """
-        A constructor function for type Pet.
-        Params:
-            self Pet, Auto added when this member fuction is run
-            pType String, The type of animal that this Pet is.  Ex. cat, dog
-            pName String, The name of the Pet. Ex. Triangle, Nibbles
-            pAge Integer, The age of the Pet. Ex. 10, 5, 13
-            pWeight Float, The weight of the Pet in pounds. Ex. 10.0, 5.3
-            pHungry Boolean, Indicates if the Pet is hungry. Ex. True, False
-            pPhoto String, A grapical representation of a Pet. Ex. (=^o.o^=)__
-        Return:
-            An object of type Pet that has the atributes specified in the
-            parameters.
-        """
-        self.pType = pType
-        self.pName = pName
-        self.pAge = pAge
-        self.pWeight = pWeight
-        self.pHungry = pHungry
-        self.pPhoto = pPhoto
-
-    def feed(self):
-        """Feeds the pet. The pet will stop being hungry and gain weight."""
-        if self.pHungry:
-            self.pHungry = False
-            self.pWeight += 1
-        else:
-            print('Your pet is not hungry!')
 
 def importPets():
     """
@@ -44,23 +14,28 @@ def importPets():
         Kennel, List, filled with type Pet
     """
     pets = json.loads(open('pets.json').read())
-    Kennel = []
+    Kennel = {}
+    attributes = {}
 
     for _, pet in pets.items():
-        pType = pet[0]['type']
-        pName = pet[1]['name']
-        pAge = pet[2]['age']
-        pWeight = pet[3]['weight']
-        pHungry = pet[4]['hungry']
-        pPhoto = pet[5]['photo']
-        Kennel.append(Pet(pType, pName, pAge, pWeight, pHungry, pPhoto))
+        attributes["pType"] = pet[0]['type']
+        attributes["pName"] = pet[1]['name']
+        attributes["pAge"] = pet[2]['age']
+        attributes["pWeight"] = pet[3]['weight']
+        attributes["pHungry"] = pet[4]['hungry']
+        attributes["pPhoto"] = pet[5]['photo']
+        Kennel[attributes["pName"]] = Pet(attributes)
     return Kennel
 
 
 # Lets user pick a pet from the list shown to interact with
-def pickaPet():
-    pet = input()
-    return pet
+def pickaPet(kennel):
+    pet_name = input("Enter a name to select that pet: ")
+    try:
+        pet = kennel[pet_name]
+        return pet
+    except KeyError:
+        print("There is no pet named {}.".format(pet_name))
 
 # Greet user and ask what pet they would like to interact with
 # Show list of pets with phots and names
@@ -86,12 +61,11 @@ def main():
             print('\\\\Kennel\\\\')
             print()
             for pet in kennel:
-                print(pet.pName, pet.pPhoto)
-                print()
+                print(kennel[pet].pName, kennel[pet].pPhoto)
         elif ans == "2":
             print("\n Pet Deleted")
         elif ans == "3":
-            print("\n Pet Found")
+            pet = pickaPet(kennel)
         elif ans == "4":
             print("\n Goodbye")
             break
