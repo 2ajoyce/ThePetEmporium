@@ -7,16 +7,10 @@ from flask import Flask, request, session, g, redirect, url_for, \
 from contextlib import closing
 import json
 from pet import Pet
-
-# configuration
-DATABASE = 'petEmporium.db'
-DEBUG = True
-SECRET_KEY = 'development key'
-USERNAME = 'admin'
-PASSWORD = 'default'
+import config
 
 app = Flask(__name__)
-app.config.from_object(__name__)
+app.config.from_object(config)
 
 
 def connect_db():
