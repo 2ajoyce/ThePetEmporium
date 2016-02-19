@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+    <form action="{{ url_for('add_pet') }}" method=post class=add-pet>
+      <dl>
+        <dt>Type:
+        <dd><input type=text size=30 name=type>
+        <dt>Name:
+        <dd><input type=text size=30 name=name>
+        <dt>Age:
+        <dd><input type=number step=1 size=30 name=age>
+        <dt>Weight:
+        <dd><input type=number step=0.1  size=30 name=weight>
+        <dt>Hungry:
+        <dd><input type=checkbox size=30 name=hungry>
+        <dt>Photo:
+        <dd><textarea name=photo rows=5 cols=40></textarea>
+        <dd><input type=submit value="Add Pet">
+      </dl>
+    </form>
+  {% endif %}
+  <ul class=pets>
+  {% for pet in pets %}
+    <li><h2>{{ pet.type }}</h2>{{ pet.name|safe }}
+  {% else %}
+    <li><em>Unbelievable.  No pets here so far</em>
+  {% endfor %}
+  </ul>
+{% endblock %}
