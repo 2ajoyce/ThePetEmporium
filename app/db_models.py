@@ -2,7 +2,7 @@
 import sqlite3
 from contextlib import closing
 from flask import g
-from app import App
+from . import App
 
 def connect_db():
     return sqlite3.connect(App.config['DATABASE'])

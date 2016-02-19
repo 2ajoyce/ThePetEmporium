@@ -1,7 +1,7 @@
 '''The application URL controllers'''
 from flask import request, session, g, redirect, url_for, \
      abort, render_template, flash
-from app import App
+from . import App
 
 
 @App.route('/')
@@ -16,7 +16,7 @@ def add_pet():
     if not session.get('logged_in'):
         abort(401)
     g.db.execute(
-        'insert into pets (type, name, age, weight, hungry, photo) values (?, ?)',
+        'insert into pets (type, name, age, weight, hungry, photo) values (?, ?, ?, ?, ?, ?)',
         [request.form['type'], request.form['name'], request.form['age'], request.form['weight'],
          request.form['hungry'], request.form['photo']])
     g.db.commit()
