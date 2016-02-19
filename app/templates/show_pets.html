@@ -8,12 +8,11 @@
         <dt>Name:
         <dd><input type=text size=30 name=name>
         <dt>Age:
-        <dd><input type=number step=1 size=30 name=age>
+        <dd><input type=number step=0.5 size=30 name=age>
         <dt>Weight:
         <dd><input type=number step=0.1  size=30 name=weight>
-        <input type="hidden" name="hungry" value="0" />
         <dt>Hungry:
-        <dd><input type=checkbox size=30 name=hungry>
+        <dd><input type=checkbox id="hungry" name=hungry size=30>
         <dt>Photo:
         <dd><textarea name=photo rows=5 cols=40></textarea>
         <dd><input type=submit value="Add Pet">
@@ -22,7 +21,12 @@
   {% endif %}
   <ul class=pets>
   {% for pet in pets %}
-    <li><h2>{{ pet.type }}</h2>{{ pet.name|safe }}
+    <li><h2>{{ pet.type }}</h2>
+    <strong>Name: </strong>{{ pet.name }}</br>
+    <strong>Age: </strong>{{ pet.age|safe }}</br>
+    <strong>Weight: </strong>{{ pet.weight|safe }}</br>
+    <strong>Hunger: </strong>{{ 'Famished' if pet.hungry==1 else 'Nope' }}</br>
+    <strong>Photo: </strong><pre>{{ pet.photo }}</pre></br>
   {% else %}
     <li><em>Unbelievable.  No pets here so far</em>
   {% endfor %}

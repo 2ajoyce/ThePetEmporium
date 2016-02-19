@@ -6,8 +6,8 @@ from . import App
 
 @App.route('/')
 def show_pets():
-    cur = g.db.execute('select type, name from pets order by id desc')
-    pets = [dict(type=row[0], name=row[1]) for row in cur.fetchall()]
+    cur = g.db.execute('select type, name, age, weight, hungry, photo from pets order by id desc')
+    pets = [dict(type=row[0], name=row[1], age=row[2], weight=row[3], hungry=row[4], photo=row[5]) for row in cur.fetchall()]
     return render_template('show_pets.html', pets=pets)
 
 
@@ -18,7 +18,7 @@ def add_pet():
     g.db.execute(
         'insert into pets (type, name, age, weight, hungry, photo) values (?, ?, ?, ?, ?, ?)',
         [request.form['type'], request.form['name'], request.form['age'], request.form['weight'],
-         request.form['hungry'], request.form['photo']])
+         1 if 'hungry' in request.form else 0, request.form['photo']])
     g.db.commit()
     flash('New pet was successfully posted')
     return redirect(url_for('show_pets'))
