@@ -4,8 +4,11 @@
 from tornado.wsgi import WSGIContainer
 from tornado.httpserver import HTTPServer
 from tornado.ioloop import IOLoop
-from packit import login
+from app import App
+from app import controller
+from app import db_models
 
-http_server = HTTPServer(WSGIContainer(login))
+db_models.init_db()
+http_server = HTTPServer(WSGIContainer(App))
 http_server.listen(5000)
 IOLoop.instance().start()
