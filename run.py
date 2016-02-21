@@ -9,7 +9,7 @@ from app import controller
 from app import db_models
 
 #Use to initialize the database if needed
-#db_models.init_db()
+db_models.init_db()
 http_server = HTTPServer(WSGIContainer(App))
 http_server.listen(5000)
 IOLoop.instance().start()
