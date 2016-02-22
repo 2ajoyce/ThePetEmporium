@@ -42,3 +42,7 @@ def logout():
     session.pop('logged_in', None)
     flash('You were logged out')
     return redirect(url_for('show_pets'))
+
+@App.route('/about')
+def about():
+    return render_template('about.html')
